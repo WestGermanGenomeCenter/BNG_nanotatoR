@@ -1,0 +1,10 @@
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - r-essentials
+  - r-base
+  - r-dplyr
+  - bioconductor-nanotator
+  - r-biocmanager
+  - r-stringr

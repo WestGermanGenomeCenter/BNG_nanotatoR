@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+filter                 1              1              1
+total                  4              1              1
+
+
+[Thu Aug 26 09:11:04 2021]
+Job 3: converting input/rvp_test_infile_converted.smap with input/rvp_test_infile_converted_header.tx ...
+
+Waiting at most 60 seconds for missing files.

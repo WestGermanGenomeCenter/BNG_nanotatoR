@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Mon Aug 23 06:34:57 2021]
+Job 4: extracting header of input/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1.smap ...
+
+[Mon Aug 23 06:34:57 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Mon Aug 23 06:34:57 2021]
+Job 3: converting input/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1.smap with input/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1_header.tx ...
+
+[Mon Aug 23 06:34:58 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Mon Aug 23 06:34:58 2021]
+Job 2: filtering converted/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1_converted.smap with a max SVfreq of 1 into filtered/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap...
+
+[Mon Aug 23 06:34:58 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Mon Aug 23 06:34:58 2021]
+Job 1: annotating filtered filtered/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed...
+
+Waiting at most 60 seconds for missing files.
+MissingOutputException in line 22 of /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/workflow/Snakefile:
+Job Missing files after 60 seconds:
+annotated/Kontrolle_HS_assembly_152_variants_combine_filters_inMoleRefine1_annotated.csv
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 1 completed successfully, but some output files are missing. 1
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-23T063457.239958.snakemake.log

@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+total                  2              1              1
+
+
+[Thu Sep 16 09:15:37 2021]
+Job 1: annotating filtered filtered/41748_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/full_database.bed...
+
+Waiting at most 60 seconds for missing files.
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

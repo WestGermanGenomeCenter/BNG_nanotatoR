@@ -1,0 +1,62 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+filter                 1              1              1
+total                  4              1              1
+
+
+[Fri Aug 13 14:48:38 2021]
+rule convert:
+    input: input/41748_assembly_151_variants_combine_filters_inMoleRefine1.smap, input/41748_assembly_151_variants_combine_filters_inMoleRefine1_header.tx
+    output: converted/41748_assembly_151_variants_combine_filters_inMoleRefine1_converted.smap
+    log: converted/41748_assembly_151_variants_combine_filters_inMoleRefine1_conversion.log
+    jobid: 3
+    wildcards: sample=41748_assembly_151_variants_combine_filters_inMoleRefine1
+    resources: tmpdir=/tmp
+
+[Fri Aug 13 14:48:39 2021]
+Finished job 3.
+1 of 4 steps (25%) done
+
+[Fri Aug 13 14:48:39 2021]
+rule filter:
+    input: converted/41748_assembly_151_variants_combine_filters_inMoleRefine1_converted.smap
+    output: filtered/41748_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap
+    log: filtered/41748_assembly_151_variants_combine_filters_inMoleRefine1_filter.log
+    jobid: 2
+    wildcards: sample=41748_assembly_151_variants_combine_filters_inMoleRefine1
+    resources: tmpdir=/tmp
+
+[Fri Aug 13 14:48:39 2021]
+Finished job 2.
+2 of 4 steps (50%) done
+
+[Fri Aug 13 14:48:39 2021]
+rule annotate:
+    input: filtered/41748_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap
+    output: annotated/41748_assembly_151_variants_combine_filters_inMoleRefine1_annotated.csv
+    log: annotated/41748_assembly_151_variants_combine_filters_inMoleRefine1_annotation.log
+    jobid: 1
+    wildcards: sample=41748_assembly_151_variants_combine_filters_inMoleRefine1
+    resources: tmpdir=/tmp
+
+[Fri Aug 13 14:48:53 2021]
+Error in rule annotate:
+    jobid: 1
+    output: annotated/41748_assembly_151_variants_combine_filters_inMoleRefine1_annotated.csv
+    log: annotated/41748_assembly_151_variants_combine_filters_inMoleRefine1_annotation.log (check log file(s) for error message)
+    shell:
+        mkdir -p annotated/ && Rscript scripts/nanotation.R /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data filtered/41748_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap annotated/41748_assembly_151_variants_combine_filters_inMoleRefine1_annotated.csv /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-13T144838.390154.snakemake.log

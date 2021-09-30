@@ -1,0 +1,43 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+filter                 1              1              1
+total                  4              1              1
+
+
+[Thu Aug 26 11:02:26 2021]
+Job 3: converting input/Sample02_assembly_152_variants_combine_filters_inMoleRefine1.smap with input/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_header.tx ...
+
+[Thu Aug 26 11:02:27 2021]
+Finished job 3.
+1 of 4 steps (25%) done
+
+[Thu Aug 26 11:02:27 2021]
+Job 2: filtering converted/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_converted.smap with a max SVfreq of 1 into filtered/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap...
+
+[Thu Aug 26 11:02:27 2021]
+Finished job 2.
+2 of 4 steps (50%) done
+
+[Thu Aug 26 11:02:27 2021]
+Job 1: annotating filtered filtered/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/test_db.bed...
+
+[Thu Aug 26 12:45:12 2021]
+Finished job 1.
+3 of 4 steps (75%) done
+
+[Thu Aug 26 12:45:12 2021]
+Job 0: extracting entries from annotated/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_annotated.csv to extend /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/test_db.bed...
+
+[Thu Aug 26 12:45:12 2021]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-26T110226.673358.snakemake.log

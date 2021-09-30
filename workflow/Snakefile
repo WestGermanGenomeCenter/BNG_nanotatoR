@@ -1,0 +1,80 @@
+configfile:"config.yaml"
+
+rule all:
+    input:
+        annotated="annotated/{sample}_annotated.tsv",
+        endfile="logs/database_add_{sample}.log"
+
+
+rule add_to_database:
+    input:
+        annotated="annotated/{sample}_annotated.tsv",
+        database=config["own_database_file"]
+    output:
+        endfile="logs/database_add_{sample}.log"
+    conda:
+        "envs/filter.yaml" # perl packages
+    message:
+        "extracting entries from {input.annotated} to extend {input.database}..."
+    shell:
+        "perl scripts/database_extension.pl --i {input.annotated} --d {input.database} >{output}"
+
+rule annotate:
+    input:
+        filtered="filtered/{sample}_filtered.smap"
+    output:
+        annotated="annotated/{sample}_annotated.tsv"
+    log:
+        "logs/{sample}_annotation.log"
+    conda:
+        "envs/annotate.yaml"
+    params:
+        data_place=config["data_files_folder"],
+        database=config["own_database_file"]
+    message:
+        "annotating filtered {input.filtered} with files in {params.data_place} and custom database {params.database}..."
+    shell:
+        "mkdir -p annotated/ && Rscript scripts/nanotation.R {params.data_place} {input} {output} {params.database} | tee {log}"
+
+
+rule filter:
+    input:
+        file="converted/{sample}_converted.smap"
+    output:
+        filtered="filtered/{sample}_filtered.smap"
+    log:
+        "logs/{sample}_filter.log"
+    params:
+        max_freq=config["max_freq"]
+    conda:
+        "envs/filter.yaml"
+    message:
+        "filtering {input.file} with a max SVfreq of {params.max_freq} into {output.filtered}..."
+    shell:
+        "mkdir -p filtered/ && perl scripts/converted_smap_filter.pl --i {input.file} --r {params.max_freq} >{output.filtered} | tee {log}"
+
+
+rule convert:
+    input:
+        raw="input/{sample}.smap",
+        header_file="input/{sample}_header.tx"
+    output:
+        file="converted/{sample}_converted.smap"
+    log:
+        "logs/{sample}_conversion.log"
+    conda:
+        "envs/convert.yaml"
+    message:
+        "converting {input.raw} with {input.header_file} ..."
+    shell:
+        "Rscript scripts/smap_converter.R {input.raw} {input.header_file} {output.file} | tee {log}"
+
+rule extract_header:
+    input:
+        "input/{sample}.smap"
+    output:
+        header_file="input/{sample}_header.tx"
+    message:
+        "extracting header of {input} ..."
+    shell:
+        "mkdir -p converted/ && head {input} -n 9 | tail -n 1 | sed 's/#h//'> {output}"

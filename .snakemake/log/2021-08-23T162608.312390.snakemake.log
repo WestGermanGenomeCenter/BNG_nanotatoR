@@ -1,0 +1,3 @@
+Building DAG of jobs...
+MissingRuleException:
+No rule to produce database_add_Sample03_assembly_152_variants_combine_filters_inMoleRefine1.log (if you use input functions make sure that they don't raise unexpected exceptions).

@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+total                  1              1              1
+
+
+[Wed Aug 25 14:19:35 2021]
+Job 0: extracting entries from annotated/43671_assembly_151_variants_combine_filters_inMoleRefine1_annotated.csv to extend /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/test_db.bed...
+
+[Wed Aug 25 14:19:35 2021]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-25T141935.257490.snakemake.log

@@ -1,0 +1,74 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Thu Aug 12 09:07:58 2021]
+rule extract_header:
+    input: input/new_test_infile_12aug.smap
+    output: input/new_test_infile_12aug_header.tx
+    jobid: 4
+    wildcards: sample=new_test_infile_12aug
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:07:58 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Thu Aug 12 09:07:58 2021]
+rule convert:
+    input: input/new_test_infile_12aug.smap, input/new_test_infile_12aug_header.tx
+    output: converted/new_test_infile_12aug_converted.smap
+    log: converted/new_test_infile_12aug_conversion.log
+    jobid: 3
+    wildcards: sample=new_test_infile_12aug
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:07:59 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Thu Aug 12 09:07:59 2021]
+rule filter:
+    input: converted/new_test_infile_12aug_converted.smap
+    output: filtered/new_test_infile_12aug_filtered.smap
+    log: filtered/new_test_infile_12aug_filter.log
+    jobid: 2
+    wildcards: sample=new_test_infile_12aug
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:07:59 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Thu Aug 12 09:07:59 2021]
+rule annotate:
+    input: filtered/new_test_infile_12aug_filtered.smap
+    output: annotated/new_test_infile_12aug_annotated.csv
+    log: annotated/new_test_infile_12aug_annotation.log
+    jobid: 1
+    wildcards: sample=new_test_infile_12aug
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Thu Aug 12 09:08:04 2021]
+Error in rule annotate:
+    jobid: 1
+    output: annotated/new_test_infile_12aug_annotated.csv
+    log: annotated/new_test_infile_12aug_annotation.log (check log file(s) for error message)
+    shell:
+        mkdir -p annotated/ && Rscript scripts/nanotation.R /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data filtered/new_test_infile_12aug_filtered.smap annotated/new_test_infile_12aug_annotated.csv /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-12T090758.703093.snakemake.log

@@ -1,0 +1,74 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Thu Aug 12 09:47:57 2021]
+rule extract_header:
+    input: input/test_4.smap
+    output: input/test_4_header.tx
+    jobid: 4
+    wildcards: sample=test_4
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:47:57 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Thu Aug 12 09:47:57 2021]
+rule convert:
+    input: input/test_4.smap, input/test_4_header.tx
+    output: converted/test_4_converted.smap
+    log: converted/test_4_conversion.log
+    jobid: 3
+    wildcards: sample=test_4
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:47:58 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Thu Aug 12 09:47:58 2021]
+rule filter:
+    input: converted/test_4_converted.smap
+    output: filtered/test_4_filtered.smap
+    log: filtered/test_4_filter.log
+    jobid: 2
+    wildcards: sample=test_4
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:47:58 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Thu Aug 12 09:47:58 2021]
+rule annotate:
+    input: filtered/test_4_filtered.smap
+    output: annotated/test_4_annotated.csv
+    log: annotated/test_4_annotation.log
+    jobid: 1
+    wildcards: sample=test_4
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Thu Aug 12 09:48:00 2021]
+Error in rule annotate:
+    jobid: 1
+    output: annotated/test_4_annotated.csv
+    log: annotated/test_4_annotation.log (check log file(s) for error message)
+    shell:
+        mkdir -p annotated/ && Rscript scripts/nanotation.R /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data filtered/test_4_filtered.smap annotated/test_4_annotated.csv /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-12T094757.582180.snakemake.log

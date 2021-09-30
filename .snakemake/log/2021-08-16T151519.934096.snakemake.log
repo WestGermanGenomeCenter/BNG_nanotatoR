@@ -1,0 +1,47 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+filter                 1              1              1
+total                  3              1              1
+
+
+[Mon Aug 16 15:15:19 2021]
+rule filter:
+    input: converted/rvp_test_infile_converted.smap
+    output: filtered/rvp_test_infile_filtered.smap
+    log: filtered/rvp_test_infile_filter.log
+    jobid: 2
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+
+[Mon Aug 16 15:15:20 2021]
+Finished job 2.
+1 of 3 steps (33%) done
+
+[Mon Aug 16 15:15:20 2021]
+rule annotate:
+    input: filtered/rvp_test_infile_filtered.smap
+    output: annotated/rvp_test_infile_annotated.csv
+    log: annotated/rvp_test_infile_annotation.log
+    jobid: 1
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Mon Aug 16 15:15:22 2021]
+Error in rule annotate:
+    jobid: 1
+    output: annotated/rvp_test_infile_annotated.csv
+    log: annotated/rvp_test_infile_annotation.log (check log file(s) for error message)
+    shell:
+        mkdir -p annotated/ && Rscript scripts/nanotation.R /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data filtered/rvp_test_infile_filtered.smap annotated/rvp_test_infile_annotated.csv /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-16T151519.934096.snakemake.log

@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Wed Aug 18 16:01:29 2021]
+Job 4: extracting header of input/43868_assembly_151_variants_combine_filters_inMoleRefine1.smap ...
+
+[Wed Aug 18 16:01:29 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Wed Aug 18 16:01:29 2021]
+Job 3: converting input/43868_assembly_151_variants_combine_filters_inMoleRefine1.smap with input/43868_assembly_151_variants_combine_filters_inMoleRefine1_header.tx ...
+
+[Wed Aug 18 16:01:30 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Wed Aug 18 16:01:30 2021]
+Job 2: filtering converted/43868_assembly_151_variants_combine_filters_inMoleRefine1_converted.smap with a max SVfreq of 1 into filtered/43868_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap...
+
+[Wed Aug 18 16:01:30 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Wed Aug 18 16:01:30 2021]
+Job 1: annotating filtered filtered/43868_assembly_151_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed...
+
+[Wed Aug 18 17:41:28 2021]
+Finished job 1.
+4 of 5 steps (80%) done
+
+[Wed Aug 18 17:41:28 2021]
+Job 0: extracting entries from annotated/43868_assembly_151_variants_combine_filters_inMoleRefine1_annotated.csv to extend /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed...
+
+[Wed Aug 18 17:41:28 2021]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-18T160129.230675.snakemake.log

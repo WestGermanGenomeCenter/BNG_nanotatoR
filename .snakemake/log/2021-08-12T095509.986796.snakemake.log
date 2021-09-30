@@ -1,0 +1,64 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Thu Aug 12 09:55:10 2021]
+rule extract_header:
+    input: input/test_5.smap
+    output: input/test_5_header.tx
+    jobid: 4
+    wildcards: sample=test_5
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:55:10 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Thu Aug 12 09:55:10 2021]
+rule convert:
+    input: input/test_5.smap, input/test_5_header.tx
+    output: converted/test_5_converted.smap
+    log: converted/test_5_conversion.log
+    jobid: 3
+    wildcards: sample=test_5
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:55:10 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Thu Aug 12 09:55:10 2021]
+rule filter:
+    input: converted/test_5_converted.smap
+    output: filtered/test_5_filtered.smap
+    log: filtered/test_5_filter.log
+    jobid: 2
+    wildcards: sample=test_5
+    resources: tmpdir=/tmp
+
+[Thu Aug 12 09:55:10 2021]
+Error in rule filter:
+    jobid: 2
+    output: filtered/test_5_filtered.smap
+    log: filtered/test_5_filter.log (check log file(s) for error message)
+    shell:
+        mkdir -p filtered/ && perl scripts/converted_smap_filter.pl --i converted/test_5_converted.smap --r 1 >filtered/test_5_filtered.smap
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job filter since they might be corrupted:
+filtered/test_5_filtered.smap
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-12T095509.986796.snakemake.log

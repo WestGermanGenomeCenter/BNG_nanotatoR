@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Fri Aug 20 23:40:37 2021]
+Job 4: extracting header of input/43781_assembly_151_variants_combine_filters_inMoleRefine1.smap ...
+
+[Fri Aug 20 23:40:37 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Fri Aug 20 23:40:37 2021]
+Job 3: converting input/43781_assembly_151_variants_combine_filters_inMoleRefine1.smap with input/43781_assembly_151_variants_combine_filters_inMoleRefine1_header.tx ...
+
+Waiting at most 60 seconds for missing files.

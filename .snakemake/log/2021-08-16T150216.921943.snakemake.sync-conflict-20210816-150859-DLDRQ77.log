@@ -1,0 +1,36 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+filter                 1              1              1
+total                  3              1              1
+
+
+[Mon Aug 16 15:02:16 2021]
+rule filter:
+    input: converted/rvp_test_infile_converted.smap
+    output: filtered/rvp_test_infile_filtered.smap
+    log: filtered/rvp_test_infile_filter.log
+    jobid: 2
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+
+[Mon Aug 16 15:02:17 2021]
+Finished job 2.
+1 of 3 steps (33%) done
+
+[Mon Aug 16 15:02:17 2021]
+rule annotate:
+    input: filtered/rvp_test_infile_filtered.smap
+    output: annotated/rvp_test_infile_annotated.csv
+    log: annotated/rvp_test_infile_annotation.log
+    jobid: 1
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+

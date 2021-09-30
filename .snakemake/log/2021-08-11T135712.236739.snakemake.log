@@ -1,0 +1,46 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Wed Aug 11 13:57:12 2021]
+rule extract_header:
+    input: input/raw_keimbahn_smap_infile.smap
+    output: input/raw_keimbahn_smap_infile_header.smap
+    jobid: 4
+    wildcards: sample=raw_keimbahn_smap_infile
+    resources: tmpdir=/tmp
+
+[Wed Aug 11 13:57:12 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Wed Aug 11 13:57:12 2021]
+rule convert:
+    input: input/raw_keimbahn_smap_infile.smap, input/raw_keimbahn_smap_infile_header.smap
+    output: converted/raw_keimbahn_smap_infile_converted.smap
+    log: converted/raw_keimbahn_smap_infile_conversion.log
+    jobid: 3
+    wildcards: sample=raw_keimbahn_smap_infile
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 48 of /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/workflow/Snakefile:
+Job Missing files after 5 seconds:
+converted/raw_keimbahn_smap_infile_converted.smap
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 3 completed successfully, but some output files are missing. 3
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-11T135712.236739.snakemake.log

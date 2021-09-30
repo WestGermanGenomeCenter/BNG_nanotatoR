@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+filter                 1              1              1
+total                  4              1              1
+
+
+[Fri Aug 13 14:41:23 2021]
+rule convert:
+    input: input/41748_assembly_151_variants_combine_filters_inMoleRefine1.smap, input/41748_assembly_151_variants_combine_filters_inMoleRefine1_header.tx
+    output: converted/41748_assembly_151_variants_combine_filters_inMoleRefine1_converted.smap
+    log: converted/41748_assembly_151_variants_combine_filters_inMoleRefine1_conversion.log
+    jobid: 3
+    wildcards: sample=41748_assembly_151_variants_combine_filters_inMoleRefine1
+    resources: tmpdir=/tmp
+
+Waiting at most 600 seconds for missing files.
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

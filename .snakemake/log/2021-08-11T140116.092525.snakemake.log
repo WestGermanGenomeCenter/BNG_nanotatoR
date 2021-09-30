@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+filter                 1              1              1
+total                  4              1              1
+
+
+[Wed Aug 11 14:01:16 2021]
+rule convert:
+    input: input/raw_keimbahn_smap_infile.smap, input/raw_keimbahn_smap_infile_header.smap
+    output: converted/raw_keimbahn_smap_infile_converted.smap
+    log: converted/raw_keimbahn_smap_infile_conversion.log
+    jobid: 3
+    wildcards: sample=raw_keimbahn_smap_infile
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Mon Aug 23 16:26:20 2021]
+Job 4: extracting header of input/Sample03_assembly_152_variants_combine_filters_inMoleRefine1.smap ...
+
+[Mon Aug 23 16:26:20 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Mon Aug 23 16:26:20 2021]
+Job 3: converting input/Sample03_assembly_152_variants_combine_filters_inMoleRefine1.smap with input/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_header.tx ...
+
+[Mon Aug 23 16:26:21 2021]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Mon Aug 23 16:26:21 2021]
+Job 2: filtering converted/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_converted.smap with a max SVfreq of 1 into filtered/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap...
+
+[Mon Aug 23 16:26:21 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Mon Aug 23 16:26:21 2021]
+Job 1: annotating filtered filtered/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed...
+
+Terminating processes on user request, this might take some time.
+[Mon Aug 23 16:30:20 2021]
+Error in rule annotate:
+    jobid: 1
+    output: annotated/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_annotated.csv
+    log: logs/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_annotation.log (check log file(s) for error message)
+    shell:
+        mkdir -p annotated/ && Rscript scripts/nanotation.R /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data filtered/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap annotated/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_annotated.csv /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed | tee logs/Sample03_assembly_152_variants_combine_filters_inMoleRefine1_annotation.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-08-23T162620.237104.snakemake.log

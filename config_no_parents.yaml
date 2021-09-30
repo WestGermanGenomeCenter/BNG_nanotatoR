@@ -1,0 +1,10 @@
+genome_name:
+  "hg38"
+data_files_folder:
+  "/home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data"
+own_database_file:
+  "/home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/database_own_samples.bed"
+base_dir:
+  "/home/daric/work_WGGC/SV_annotation/sv_nanotation_snake"
+header_file:
+  "/home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/needed_header_no_fam.smap"

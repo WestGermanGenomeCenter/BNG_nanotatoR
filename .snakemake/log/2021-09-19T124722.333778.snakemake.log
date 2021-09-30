@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+total                  2              1              1
+
+
+[Sun Sep 19 12:47:22 2021]
+Job 1: annotating filtered filtered/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_filtered.smap with files in /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data and custom database /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/full_database.bed...
+
+[Sun Sep 19 14:28:29 2021]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Sun Sep 19 14:28:29 2021]
+Job 0: extracting entries from annotated/Sample02_assembly_152_variants_combine_filters_inMoleRefine1_annotated.tsv to extend /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/data/full_database.bed...
+
+[Sun Sep 19 14:28:29 2021]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/daric/work_WGGC/SV_annotation/sv_nanotation_snake/.snakemake/log/2021-09-19T124722.333778.snakemake.log

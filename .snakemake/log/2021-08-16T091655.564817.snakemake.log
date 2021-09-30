@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+add_to_database        1              1              1
+annotate               1              1              1
+convert                1              1              1
+extract_header         1              1              1
+filter                 1              1              1
+total                  5              1              1
+
+
+[Mon Aug 16 09:16:55 2021]
+rule extract_header:
+    input: input/rvp_test_infile.smap
+    output: input/rvp_test_infile_header.tx
+    jobid: 4
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+
+[Mon Aug 16 09:16:55 2021]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Mon Aug 16 09:16:55 2021]
+rule convert:
+    input: input/rvp_test_infile.smap, input/rvp_test_infile_header.tx
+    output: converted/rvp_test_infile_converted.smap
+    log: converted/rvp_test_infile_conversion.log
+    jobid: 3
+    wildcards: sample=rvp_test_infile
+    resources: tmpdir=/tmp
+
+Waiting at most 60 seconds for missing files.
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.
